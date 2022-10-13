@@ -1,0 +1,47 @@
+
+
+#include <stdio.h>
+#include <math.h>
+
+double dist(double ax, double ay, double bx, double by){
+    return sqrt(pow(ax-bx, 2) + pow(ay-by, 2));
+}
+double calcS(double a, double b, double c){
+    return (a+b+c)/2;
+}
+double Heron(double a, double b, double c, double s){
+    return sqrt(s*(s-a)*(s-b)*(s-c));
+}
+
+int main()
+{
+    double x[3];
+    double y[3];
+    double d[3];
+    printf ("Imput x coordinate for point A \n");
+    scanf ("%lf", &x[0]);
+    printf ("Imput y coordinate for point A \n");
+    scanf ("%lf", &y[0]);
+    printf ("Imput x coordinate for point B\n");
+    scanf ("%lf", &x[1]);
+    printf ("Imput y coordinate for point B \n");
+    scanf ("%lf", &y[1]);
+    printf ("Imput x coordinate for point C\n");
+    scanf ("%lf", &x[2]);
+    printf ("Imput y coordinate for point C \n");
+    scanf ("%lf", &y[2]);
+    
+    
+    d[0] = dist(x[0],y[0],x[1],y[1]);
+    d[1] = dist(x[0],y[0],x[2],y[2]);
+    d[2] = dist(x[1],y[1],x[2],y[2]);
+    
+    
+    printf ("The length of side AB              : %lf \n", d[0]);
+    printf ("The length of side AC              : %lf \n", d[1]);
+    printf ("The length of side BC              : %lf \n", d[2]);
+    printf ("The perimeter of the triangle ABC  : %lf \n", d[0]+d[1]+d[2]);
+    printf ("The area of the triangle ABC       : %lf \n", Heron(d[0],d[1],d[2],calcS(d[0],d[1],d[2])));
+    
+    return 0;
+}
